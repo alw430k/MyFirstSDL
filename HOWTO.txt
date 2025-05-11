@@ -1,0 +1,48 @@
+Setup/Installing:
+1. Make VSCode Project Folder in explorer
+    1a. Open this folder in vscode
+    1b. create a main.c or main.cpp file as your main program file
+2. Terminal -> Configure Default Build Task -> C/C++: gcc.exe build active file
+    - to create .vscode launch configurations
+3. Download SDL3-devel-3.x.x-mingw.zip
+    - https://github.com/libsdl-org/SDL/releases
+    3a. Unzip/extract with 7zip or other
+4. make src folder in project folder
+5. Install SDL3 files
+    5a. Copy \SDL3-devel-3.2.12-mingw\SDL3-3.2.12\x86_64-w64-mingw32\include directory into project\src directory
+    5b. Copy \SDL3-devel-3.2.12-mingw\SDL3-3.2.12\x86_64-w64-mingw32\lib directory into project\src directory
+    5c. Copy \SDL3-devel-3.2.12-mingw\SDL3-3.2.12\x86_64-w64-mingw32\bin\SDL3.dll file into project directory (next to your main.c)
+6. Install SDL3 Extensions
+    6a. Download SDL3_[extention]-devel-3.x.x-mingw.zip extentions:
+        - SDL3_image: https://github.com/libsdl-org/SDL_image/releases
+        - SDL3_ttf: https://github.com/libsdl-org/SDL_ttf/releases
+        - SDL2_mixer: https://github.com/libsdl-org/SDL_mixer/releases
+    6b. Unzip/extract with 7zip or other
+    6c. Copy \SDL3_image-devel-3.2.4-mingw\SDL3_image-3.2.4\x86_64-w64-mingw32\include\SDL3_image\SDL_image.h file into project\src\include\SDL3 directory
+    6d. Copy \SDL3_image-devel-3.2.4-mingw\SDL3_image-3.2.4\x86_64-w64-mingw32\lib\cmake\SDL3_image directory into project\src\lib\cmake\ directory
+    6e. Copy \SDL3_image-devel-3.2.4-mingw\SDL3_image-3.2.4\x86_64-w64-mingw32\lib\pkgconfig\ file contents (like sdl3-image.pc) into project\src\lib\pkgconfig\ directory
+    6f. Copy remaining \SDL3_image-devel-3.2.4-mingw\SDL3_image-3.2.4\x86_64-w64-mingw32\lib\ file contents (like libSDL3_image.dll.a) into project\src\lib\ directory
+    6g. Copy \SDL3_image-devel-3.2.4-mingw\SDL3_image-3.2.4\x86_64-w64-mingw32\bin\SDL3_image.dll file into project directory (next to your main.c)
+    - Repeat for other extentions
+7. Try some code in main.c/main.cpp
+    - https://examples.libsdl.org/SDL3/
+
+Compiling and running main:
+
+for c:
+gcc -g -c main.c -Isrc/include -Lsrc/lib -lmingw32 -lSDL3_image -lSDL3
+gcc -g -o Pong  main.o -Isrc/include -Lsrc/lib -lmingw32 -lSDL3_image -lSDL3
+./Pong.exe
+
+for c++:
+gcc main.cpp -o main -Isrc/include -Lsrc/lib -lmingw32 -lSDL3_image -lSDL3
+./main.exe
+
+Notes:
+- main.c #include <SDL3/SDL.h> line may have error squigly lines
+    ignore by: hover -> quick fix -> disable error squigly lines
+- can run example files in c or c++, gcc command will differ
+    -main.c code works for main.cpp, only with file name extension change
+- run gcc command and include all extensions as "-lSDL3_[extensionName]" with space between each parameter
+
+HAVE FUN!

@@ -1,4 +1,11 @@
 Setup/Installing:
+
+https://www.msys2.org/
+
+pacman -S mingw-w64-ucrt-x86_64-gcc
+
+add to msys64/ucrt64/bin to path
+
 1. Make VSCode Project Folder in explorer
     1a. Open this folder in vscode
     1b. create a main.c or main.cpp file as your main program file
@@ -46,3 +53,14 @@ Notes:
 - run gcc command and include all extensions as "-lSDL3_[extensionName]" with space between each parameter
 
 HAVE FUN!
+
+"-fdiagnostics-color=always",
+				"-g",
+				"${file}",
+				"-o",
+				"${fileDirname}\\${fileBasenameNoExtension}.exe",
+				"-Isrc/include",
+				"-Lsrc/lib",
+				"-lmingw32",
+				"-lSDL3_image",
+				"-lSDL3"
